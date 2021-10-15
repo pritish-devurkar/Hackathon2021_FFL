@@ -1,4 +1,5 @@
-from wtforms import Form, IntegerField, StringField, validators
+from wtforms import Form, IntegerField, StringField, validators, SelectField, FieldList, FormField
+
 
 class InputForm(Form):
     league_id = IntegerField(
@@ -17,3 +18,8 @@ class InputForm(Form):
         label='swid',
         validators=[validators.InputRequired()]
     )
+class TradeForms(Form):
+    name = SelectField("Placeholder", choices=[])
+
+class SelectFormList(Form):
+    name_entries = FieldList(FormField(TradeForms))
